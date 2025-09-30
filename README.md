@@ -1,6 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -19,28 +16,49 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Hvordan sette opp og kjøre applikasjonen
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Sørg for at du har Node.js og npm installert.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+fra project root folder kjør:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install
+npm start
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Frontend starter på http://localhost:3000.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Kodestruktur og begrunnelse
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Frontend
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+api/ – Axios-kall mot backend (fishApi.ts).
 
-## Learn More
+components/ – små komponenter som kan gjenbrukes:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+FishForm.tsx - skjema for å legge til ny fisk
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+FishList.tsx - tabell med fisker, redigering og sletting
+
+FishInfo.tsx - enkel statistikkvisning
+
+pages/ – Fishes.tsx, hovedsiden som binder alt sammen.
+
+validation/ – fishValidation.ts, frontend-validering. Denne kan gjenbrukes men har bevisst valgt å bare bruke den på
+fishForm. På fishList vil jeg demonstrere valideringen som gjøres fra backend. 
+
+Denne oppdelingen gjør det lett å finne fram i prosjektet, og skiller tydelig mellom logikk, visning og datatilgang.
+ 
+## Testing
+
+Jest som testrammeverk.
+
+React Testing Library for å teste komponenter slik brukeren faktisk opplever dem.
+
+Skjemaene er testet for validering, f.eks. at navn og art ikke kan være tomme.
+
+Hvis man ønsker å se testene kjøre i en ekte nettleser, kan man utvide med Playwright eller Cypress til ende-til-ende-testing.
+
+Oppsummering
+
+Applikasjonen er bygget i Spring Boot og React, med H2 som enkel database for lokal kjøring. Backend følger en lagdelt arkitektur, mens frontend er komponentbasert. Testing er gjort både på backend (JUnit/Mockito) og frontend (Jest/RTL) for å sikre at både logikk og brukerflyt fungerer som forventet.

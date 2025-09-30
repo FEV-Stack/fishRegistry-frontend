@@ -7,12 +7,12 @@ import Fishes from './pages/fishes';
 const App = () => {
     return (
         <Router>
-            <nav style={{ marginBottom: "20px" }}>
-                <Link to="/">Home</Link> | <Link to="/fishes">About</Link>
+            <nav style={{ margin: "20px" }}>
+                <Link to="/">Hjemhavn</Link> | <Link to="/fishes">Fiskeregisteret</Link>
             </nav>
 
             <Routes>
-                <Route path="/" element={<Homepage title={"Welcome"} />} />
+                <Route path="/" element={<Homepage title={"Velkommen til Fisken"} />} />
                 <Route path="/fishes" element={<Fishes />} />
             </Routes>
         </Router>

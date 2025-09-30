@@ -6,7 +6,14 @@ interface HomePageProps {
 
 const homepage = ({ title }: HomePageProps) => {
     return (
-        <div>
+        <div   style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "50vh",
+            flexDirection: "column",
+            textAlign: "center",
+        }}>
             <h1>{title}</h1>
         </div>
     )
